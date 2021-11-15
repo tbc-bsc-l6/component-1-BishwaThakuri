@@ -1,9 +1,6 @@
 <?php
-
-
 namespace awe;
-
-
+/*gameproduct inherit the property of shopproperty*/
 class GameProduct extends ShopProduct
 {
     private $pegi;
@@ -24,9 +21,10 @@ class GameProduct extends ShopProduct
             $mainName,
             $price
         );
+        //passing value
         $this->pegi = $pegi;
     }
-
+    /*function to retun the pegi value*/
     public function getPegi()
     {
         return $this->pegi;

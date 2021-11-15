@@ -29,8 +29,9 @@ class HtmlProductWriter extends ShopProductWriter
     {
         $bookproducts = [];
         $cdproducts = [];
-        $gameproducts = [];
+        $gameproducts = [];/*creating the gameproduct array*/
 
+        /*Check if given object belong to book, cd or game class*/
         foreach ($this->products as $product) {
          if($product instanceof BookProduct) $bookproducts[] = $product;
          if($product instanceof CdProduct) $cdproducts[] = $product;
@@ -39,6 +40,8 @@ class HtmlProductWriter extends ShopProductWriter
 
         $booktable = $this->generateBookTable($bookproducts);
         $cdtable = $this->generateCdTable($cdproducts);
+
+        /*this will generate game table and store in gametable*/
         $gametable = $this->generateGameTable($gameproducts);
 
         $addProduct = $this->generateAddProductForm();
@@ -49,6 +52,7 @@ class HtmlProductWriter extends ShopProductWriter
             '<br />'
             .$cdtable.
             '<br />'
+            /*This will show he game table*/
             .$gametable.
             '<br />'
             .$addProduct .
@@ -117,6 +121,7 @@ class HtmlProductWriter extends ShopProductWriter
             </table>';
     }
 
+    /*Formating of the game table */
     private function generateGameTable($gameproducts)
     {
         $contents = '';
@@ -148,6 +153,7 @@ class HtmlProductWriter extends ShopProductWriter
             </table>';
     }
 
+    /*Form the input teh value into the table*/
     private function generateAddProductForm()
     {
         return '
