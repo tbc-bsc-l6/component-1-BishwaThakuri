@@ -1,8 +1,6 @@
 <?php
 
-
 namespace awe;
-
 
 class JsonUtility
 {
@@ -23,6 +21,12 @@ class JsonUtility
                     $bookproduct = new \awe\BookProduct($product['id'],$product['title'], $product['firstname'],
                         $product['mainname'],$product['price'], $product['numpages']);
                     $products[]=$bookproduct;
+                    break;
+                /*For product which is game store its all data in gameproducut and again store the value of gameproduct in product array in json format*/
+                case "game":
+                    $gameproduct = new \awe\GameProduct($product['id'],$product['title'], $product['firstname'],
+                        $product['mainname'],$product['price'], $product['pegi']);
+                    $products[]=$gameproduct;
                     break;
             }
         }
@@ -72,6 +76,8 @@ class JsonUtility
 
         if($producttype=='cd') $newProduct['playlength'] = $pages;
         if($producttype=='book') $newProduct['numpages'] = $pages;
+        /*for game product storing the value of pages into pegi*/
+        if($producttype=='game') $newProduct['pegi'] = $pages;
 
         $products[] = $newProduct;
 

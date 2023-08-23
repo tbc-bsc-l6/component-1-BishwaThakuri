@@ -34,6 +34,11 @@ class JsonProductWriter extends ShopProductWriter
             $json_product['playlength'] = $product->getPlayLength();
             $json_product['type'] = "cd";
         }
+        /*Chcek if the product belong to gameproduct class and replace pages with pegi*/
+        if($product instanceof GameProduct) {
+            $json_product['pegi'] = $product->getPegi();
+            $json_product['type'] = "game";
+        }
 
         return json_encode($json_product);
     }
